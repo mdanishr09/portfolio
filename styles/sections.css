@@ -1,0 +1,37 @@
+/**
+ * File: styles/sections.css
+ * 
+ * Used by: index.html
+ * Uses: styles/variables.css
+ */
+p.summary { font-size: 1rem; line-height: 1.65; color: var(--text); margin: 0; max-width: 60ch; }
+
+/* Skills */
+.skills-list { display: flex; flex-direction: column; gap: 1.6rem; }
+.skills-category strong { display: block; font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+.skills-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.skills-tags a, .skills-tags span { font-size: 0.85rem; color: var(--muted); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.85rem; transition: color 0.15s ease, border-color 0.15s ease; }
+.skills-tags a:hover, .skills-tags a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+/* Projects */
+.project-item { padding-top: 1.8rem; margin-bottom: 1.8rem; border-top: 1px solid var(--border); }
+.project-item:first-child { padding-top: 0; border-top: none; }
+.project-item:last-child { margin-bottom: 0; }
+.project-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 0.6rem 0; }
+.project-type { display: block; font-size: 0.92rem; font-weight: 400; color: var(--muted); text-decoration: none; margin: 0 0 0.9rem 0; border-bottom: 1px solid transparent; width: fit-content; transition: color 0.15s ease, border-color 0.15s ease; }
+a.project-type:hover, a.project-type:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
+.project-info { font-size: 1rem; line-height: 1.65; color: var(--text); margin: 0 0 0.9rem 1rem; max-width: 60ch; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.project-tech a, .project-tech span { font-size: 0.85rem; color: var(--muted); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.85rem; transition: color 0.15s ease, border-color 0.15s ease; }
+.project-tech a:hover, .project-tech a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+/* Services & Experience */
+.entry-item { padding-top: 1.8rem; margin-bottom: 1.8rem; border-top: 1px solid var(--border); }
+.entry-item:first-child { padding-top: 0; border-top: none; }
+.entry-item:last-child { margin-bottom: 0; }
+.entry-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 0.6rem 0; }
+.entry-meta { display: block; font-size: 0.92rem; font-weight: 400; color: var(--muted); margin: 0 0 0.9rem 0; }
+.entry-description { font-size: 1rem; line-height: 1.65; color: var(--text); margin: 0 0 0.9rem 1rem; max-width: 60ch; }
+.entry-highlights { display: flex; flex-direction: column; gap: 0.9rem; margin: 0 0 0.9rem 1rem; }
+.entry-highlight { font-size: 1rem; line-height: 1.65; color: var(--text); margin: 0; max-width: 60ch; }
+.entry-highlight strong { font-weight: 600; }

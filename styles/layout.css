@@ -1,0 +1,64 @@
+/**
+ * File: styles/layout.css
+ * 
+ * Used by: index.html
+ * Uses: styles/variables.css
+ */
+:root { --max-width: 680px; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+
+/* Header */
+header { margin-bottom: 4.5rem; padding-top: 0.25rem; position: relative; }
+.profile-row { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.avatar { width: 64px; height: 64px; flex-shrink: 0; border-radius: 17px; background-color: var(--muted); overflow: hidden; }
+.avatar[hidden] { display: none; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+h1 { font-size: 1.55rem; font-weight: 700; margin: 0 0 0.35rem 0; letter-spacing: -0.01em; }
+.subtitle { font-size: 1.05rem; font-weight: 500; color: var(--accent); margin: 0; }
+.header-contacts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
+.header-contacts a { display: flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; color: var(--text); border: 1px solid var(--border); border-radius: 6px; transition: border-color 0.15s ease, color 0.15s ease; }
+.header-contacts a:hover, .header-contacts a:focus-visible { border-color: var(--accent); color: var(--accent); }
+.header-contacts svg { width: 1rem; height: 1rem; }
+
+/* Nav */
+nav.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+nav.site-nav a { font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; color: var(--muted); padding-bottom: 0.15rem; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+nav.site-nav a:not(:last-child)::after { content: "\00B7"; display: inline-block; color: var(--border); font-weight: 400; margin: 0 0.9rem; }
+nav.site-nav a:hover, nav.site-nav a:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+/* Collapsible sections */
+details > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; list-style: none; margin: 0 0 1.3rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); -webkit-tap-highlight-color: transparent; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::marker { content: ""; }
+.chevron { display: flex; align-items: center; justify-content: center; width: 1.15rem; height: 1.15rem; flex-shrink: 0; color: var(--muted); transition: transform 0.2s ease; }
+.chevron svg { width: 100%; height: 100%; }
+details[open] > summary .chevron { transform: rotate(180deg); }
+h2 { font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text); margin: 0; }
+section { margin-bottom: 3.75rem; scroll-margin-top: 1.5rem; }
+section[hidden] { display: none; }
+
+/* Fatal error */
+.fatal-error { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; position: fixed; inset: 0; z-index: 90; background-color: var(--bg); }
+.fatal-error[hidden] { display: none; }
+.fatal-error-card { max-width: 360px; text-align: center; }
+.fatal-error-card h1 { font-size: 1.3rem; font-weight: 700; margin: 0 0 0.6rem 0; }
+.fatal-error-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; margin: 0 0 1.5rem 0; }
+.pill-btn-fatal { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--bg); background-color: var(--text); border: none; border-radius: 999px; padding: 0.65rem 1.6rem; cursor: pointer; transition: opacity 0.15s ease; }
+.pill-btn-fatal:hover { opacity: 0.85; }
+
+/* Theme toggle */
+.theme-toggle { position: absolute; top: 0; right: 0; display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: border-color 0.15s ease, background-color 0.15s ease; }
+.theme-toggle:hover, .theme-toggle:focus-visible { border-color: var(--accent); }
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; }
+
+/* Footer */
+footer.site-footer { margin-top: 4rem; padding-top: 1.75rem; border-top: 1px solid var(--border); text-align: center; }
+.footer-copyright { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.9rem 0; }
+.back-to-top { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+.back-to-top:hover, .back-to-top:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 600px) {
+  .container { padding: 3.5rem 1.25rem 4rem; }
+  header { padding-top: 2.75rem; }
+  .theme-toggle { top: -1.75rem; }
+}

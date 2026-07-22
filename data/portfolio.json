@@ -1,0 +1,233 @@
+{
+  "personalInfo": {
+    "id": "danish-riaz",
+    "name": "MUHAMMAD DANISH RIAZ",
+    "role": "Software Engineer",
+    "avatar": "profile.jpg"
+  },
+  "nav": [
+    { "id": "about", "label": "About", "href": "#about-section" },
+    { "id": "services", "label": "Services", "href": "#services-section" },
+    { "id": "experience", "label": "Experience", "href": "#experience-section" },
+    { "id": "skills", "label": "Skills", "href": "#skills-section" },
+    { "id": "projects", "label": "Projects", "href": "#projects-section" },
+    { "id": "contacts", "label": "Contacts", "href": "#contacts-section" }
+  ],
+  "summary": "I'm a Software Engineer and BSIT graduate focused on building clean, efficient, and responsive web applications. I bridge the gap between robust backend logic and intuitive frontend design, leveraging modern frameworks and AI-augmented tools to build the future of software.",
+  "services": [
+    {
+      "id": "frontend-web-development",
+      "title": "Frontend Web Development",
+      "description": "Building responsive, high-performance, and visually engaging user interfaces from scratch or design mockups.",
+      "tech": [
+        { "id": "html5", "name": "HTML5", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { "id": "css3", "name": "CSS3", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { "id": "javascript-es6", "name": "JavaScript (ES6+)", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { "id": "react", "name": "React", "url": "https://react.dev/" }
+      ]
+    },
+    {
+      "id": "backend-api-development",
+      "title": "Backend & API Development",
+      "description": "Designing robust server-side logic, secure user authentication, and high-throughput RESTful APIs.",
+      "tech": [
+        { "id": "nodejs", "name": "Node.js", "url": "https://nodejs.org/" },
+        { "id": "php", "name": "PHP", "url": "https://www.php.net/" },
+        { "id": "flask", "name": "Flask", "url": "https://flask.palletsprojects.com/" },
+        { "id": "fastapi", "name": "FastAPI", "url": "https://fastapi.tiangolo.com/" }
+      ]
+    },
+    {
+      "id": "database-design-architecture",
+      "title": "Database Design & Architecture",
+      "description": "Structuring scalable relational and non-relational database schemas, optimizing complex queries, and managing data migrations.",
+      "tech": [
+        { "id": "mysql", "name": "MySQL", "url": "https://www.mysql.com/" },
+        { "id": "mongodb", "name": "MongoDB", "url": "https://www.mongodb.com/" }
+      ]
+    },
+    {
+      "id": "cross-platform-mobile-development",
+      "title": "Cross-Platform Mobile Development",
+      "description": "Developing native-performing, feature-rich iOS and Android applications from a single codebase.",
+      "tech": [
+        { "id": "flutter", "name": "Flutter", "url": "https://flutter.dev/" },
+        { "id": "react-native", "name": "React Native", "url": "https://reactnative.dev/" }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "lead-freelance-software-engineer",
+      "role": "Lead Freelance Software Engineer",
+      "company": "Self-Employed",
+      "period": "January 2023 – Present",
+      "highlights": [
+        {
+          "id": "full-stack-web-development",
+          "title": "Full-Stack Web Development",
+          "description": "Architected and deployed responsive, high-performance web applications using React and modern HTML5/CSS3/JS on the frontend, integrated with robust, secure backends built on Node.js, Flask, FastAPI, and PHP."
+        },
+        {
+          "id": "mobile-app-delivery",
+          "title": "Mobile App Delivery",
+          "description": "Developed and launched cross-platform mobile applications for iOS and Android using Flutter and React Native, ensuring native-like performance, smooth animations, and seamless API integrations."
+        },
+        {
+          "id": "database-design-migration",
+          "title": "Database Design & Migration",
+          "description": "Designed scalable relational (MySQL) and non-relational (MongoDB) database architectures, optimizing query performance and structuring schemas to handle rapid data growth safely."
+        },
+        {
+          "id": "api-engineering",
+          "title": "API Engineering",
+          "description": "Built and documented secure, high-throughput RESTful APIs, implementing robust user authentication, third-party integrations (payment gateways, social logins), and real-time features."
+        },
+        {
+          "id": "client-project-management",
+          "title": "Client & Project Management",
+          "description": "Gathered requirements directly from diverse clients, estimated project timelines, managed version control (Git), and successfully delivered complex software solutions on time and within budget."
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "languages",
+      "category": "Languages",
+      "items": [
+        { "id": "c", "name": "C", "url": "https://en.cppreference.com/w/c" },
+        { "id": "cpp", "name": "C++", "url": "https://isocpp.org/" },
+        { "id": "csharp", "name": "C#", "url": "https://dotnet.microsoft.com/en-us/languages/csharp" },
+        { "id": "java", "name": "Java", "url": "https://www.java.com/" },
+        { "id": "python", "name": "Python", "url": "https://www.python.org/" },
+        { "id": "php", "name": "PHP", "url": "https://www.php.net/" },
+        { "id": "sql", "name": "SQL", "url": "https://www.iso.org/standard/76583.html" }
+      ]
+    },
+    {
+      "id": "frontend-development",
+      "category": "Front-end Development",
+      "items": [
+        { "id": "html", "name": "HTML", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { "id": "css", "name": "CSS", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { "id": "javascript", "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { "id": "react", "name": "React", "url": "https://react.dev/" }
+      ]
+    },
+    {
+      "id": "backend-development",
+      "category": "Back-end Development",
+      "items": [
+        { "id": "nodejs", "name": "Node.js", "url": "https://nodejs.org/" },
+        { "id": "express", "name": "Express", "url": "https://expressjs.com/" },
+        { "id": "flask", "name": "Flask", "url": "https://flask.palletsprojects.com/" },
+        { "id": "fastapi", "name": "FastAPI", "url": "https://fastapi.tiangolo.com/" },
+        { "id": "php-backend", "name": "PHP", "url": "https://www.php.net/" },
+        { "id": "rest-apis", "name": "REST APIs", "url": "https://developer.mozilla.org/en-US/docs/Glossary/REST" }
+      ]
+    },
+    {
+      "id": "database",
+      "category": "Database",
+      "items": [
+        { "id": "mysql", "name": "MySQL", "url": "https://www.mysql.com/" },
+        { "id": "mongodb", "name": "MongoDB", "url": "https://www.mongodb.com/" }
+      ]
+    },
+    {
+      "id": "mobile-development",
+      "category": "Mobile Application Development",
+      "items": [
+        { "id": "react-native", "name": "React Native", "url": "https://reactnative.dev/" }
+      ]
+    },
+    {
+      "id": "version-control",
+      "category": "Version Control System",
+      "items": [
+        { "id": "git", "name": "Git", "url": "https://git-scm.com/" },
+        { "id": "github", "name": "GitHub", "url": "https://github.com/" }
+      ]
+    },
+    {
+      "id": "quality-assurance",
+      "category": "Software Quality Assurance",
+      "items": [
+        { "id": "testing-principles", "name": "Manual & Automated testing principles", "url": null }
+      ]
+    },
+    {
+      "id": "ai-augmented-development",
+      "category": "AI Augmented Development",
+      "items": [
+        { "id": "claude-code", "name": "Claude Code", "url": "https://docs.claude.com/en/docs/claude-code/overview" },
+        { "id": "github-copilot", "name": "GitHub Copilot", "url": "https://github.com/features/copilot" },
+        { "id": "lovable", "name": "Lovable", "url": "https://lovable.dev/" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "course-assistant",
+      "title": "Course Assistant",
+      "type": "Learning Management System",
+      "link": "https://en.wikipedia.org/wiki/Learning_management_system",
+      "info": "Engineered and deployed an online course management system for students and teachers during Covid-19.",
+      "tech": [
+        { "id": "html", "name": "HTML", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { "id": "css", "name": "CSS", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { "id": "javascript", "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { "id": "react", "name": "React", "url": "https://react.dev/" },
+        { "id": "python", "name": "Python", "url": "https://www.python.org/" },
+        { "id": "flask", "name": "Flask", "url": "https://flask.palletsprojects.com/" },
+        { "id": "sql", "name": "SQL", "url": "https://www.iso.org/standard/76583.html" }
+      ]
+    },
+    {
+      "id": "blogy",
+      "title": "Blogy",
+      "type": "Content Management System",
+      "link": "https://en.wikipedia.org/wiki/Blog",
+      "info": "Developed a personal blogging site in the MERN stack.",
+      "tech": [
+        { "id": "react", "name": "React", "url": "https://react.dev/" },
+        { "id": "nodejs", "name": "Node.js", "url": "https://nodejs.org/" },
+        { "id": "express", "name": "Express", "url": "https://expressjs.com/" },
+        { "id": "mongodb", "name": "MongoDB", "url": "https://www.mongodb.com/" }
+      ]
+    },
+    {
+      "id": "scheduler",
+      "title": "Scheduler",
+      "type": "Personal Task Manager",
+      "link": "https://en.wikipedia.org/wiki/Task_management",
+      "info": "Architected a cross-platform to-do list mobile application.",
+      "tech": [
+        { "id": "react-native", "name": "React Native", "url": "https://reactnative.dev/" },
+        { "id": "sqlite", "name": "SQLite", "url": "https://www.sqlite.org/" }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "title": "Portfolio",
+      "type": "Personal Website",
+      "link": null,
+      "info": "Built and delivered custom, responsive personal websites tailored to client specifications.",
+      "tech": [
+        { "id": "html", "name": "HTML", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+        { "id": "css", "name": "CSS", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+        { "id": "javascript", "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { "id": "php", "name": "PHP", "url": "https://www.php.net/" },
+        { "id": "sql", "name": "SQL", "url": "https://www.iso.org/standard/76583.html" }
+      ]
+    }
+  ],
+  "contacts": [
+    { "id": "email", "name": "Email", "url": "mailto:mdanishr18@gmail.com", "icon": "mail" },
+    { "id": "website", "name": "Website", "url": "https://danish19891414.github.io/danish-portfolio/", "icon": "globe" },
+    { "id": "github", "name": "GitHub", "url": "https://github.com/MDanishR09", "icon": "github" },
+    { "id": "linkedin", "name": "LinkedIn", "url": "https://www.linkedin.com/in/mdanishr09/", "icon": "linkedin" },
+    { "id": "x-twitter", "name": "X (Twitter)", "url": "https://x.com/MDanishR09", "icon": "x" }
+  ]
+}

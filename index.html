@@ -1,0 +1,143 @@
+<!-- 
+  Used by: Browser (Entry point)
+  Uses: 
+    - styles/variables.css
+    - styles/base.css
+    - styles/loader.css
+    - styles/layout.css
+    - styles/sections.css
+    - styles/contacts.css
+    - scripts/main.js
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Danish Riaz — Software Engineer</title>
+    <meta name="description" content="Portfolio of Muhammad Danish Riaz, Software Engineer.">
+    <!-- -->
+    <link rel="canonical" href="https://mdanishr09.github.io/portfolio/">
+   <meta property="og:title" content="Muhammad Danish Riaz — Software Engineer">
+   <meta property="og:description" content="Portfolio of Muhammad Danish Riaz, Software Engineer.">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://mdanishr09.github.io/portfolio/">
+   <meta name="twitter:card" content="summary">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/sections.css">
+    <link rel="stylesheet" href="styles/contacts.css">
+</head>
+<body id="top">
+    <!-- Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Fatal Error Screen -->
+    <div id="fatalErrorScreen" class="fatal-error" hidden>
+        <div class="fatal-error-card">
+            <h1>Something went wrong</h1>
+            <p>We couldn't load this page right now. Please check your connection and try again.</p>
+            <button id="fatalErrorRetry" class="pill-btn-fatal">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="pageContainer" class="container">
+        <header>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span id="themeIcon"></span>
+            </button>
+            <div class="profile-row">
+                <div class="avatar" hidden>
+                    <img id="avatarImg" src="" alt="">
+                </div>
+                <div>
+                    <h1 id="name"></h1>
+                    <p class="subtitle" id="role"></p>
+                </div>
+            </div>
+            <div id="header-contacts" class="header-contacts"></div>
+            <nav id="site-nav" class="site-nav"></nav>
+        </header>
+
+        <main>
+            <section id="about-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>About</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <p class="summary" id="summary"></p>
+                </details>
+            </section>
+
+            <section id="services-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>Services</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div id="services-container"></div>
+                </details>
+            </section>
+
+            <section id="experience-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>Experience</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div id="experience-container"></div>
+                </details>
+            </section>
+
+            <section id="skills-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>Skills</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div id="skills-container" class="skills-list"></div>
+                </details>
+            </section>
+
+            <section id="projects-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>Projects</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div id="projects-container"></div>
+                </details>
+            </section>
+
+            <section id="contacts-section" hidden>
+                <details open>
+                    <summary>
+                        <h2>Contacts</h2>
+                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div id="links-container" class="links-list"></div>
+                </details>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p class="footer-copyright">© <span id="footerYear"></span> <span id="footerName"></span>. All rights reserved.</p>
+            <a href="#top" id="backToTop" class="back-to-top">↑ Back to top</a>
+        </footer>
+    </div>
+
+    <noscript>
+        <p style="text-align:center; padding:2rem;">This site needs JavaScript enabled to load the portfolio. You can reach me at mdanishr18@gmail.com.</p>
+    </noscript>
+
+    <!-- Scripts -->
+    <script type="module" src="scripts/main.js" defer="true"></script>
+</body>
+</html>
