@@ -1,0 +1,8 @@
+{
+  "success": "Thanks! Your message has been sent.",
+  "errors": {
+    "generic": "Your message failed to send. Please try again.",
+    "cooldown": "Please wait a moment before sending another message.",
+    "timeout": "That's taking longer than expected. Please check your connection and try again."
+  }
+}

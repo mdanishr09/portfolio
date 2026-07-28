@@ -1,0 +1,100 @@
+/* File: styles/404.css
+   Used by: 404.html
+   Uses: base/variables.css (reads --bg, --text, --muted, --accent,
+   --border, --text-error, --font-sans custom properties)
+   Standalone styling for the 404 page — deliberately not reusing
+   layout/layout.css or sections/sections.css, since this is a much
+   simpler single-message page, not the full site shell. */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-page {
+    max-width: 420px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 0.5rem 0;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+}
+
+.error-page h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
+}
+
+.error-message {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+
+.error-path {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    color: var(--text-error);
+    background-color: var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    margin: 0 0 1.75rem 0;
+}
+
+.error-path[hidden] {
+    display: none;
+}
+
+.error-home-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bg);
+    background-color: var(--text);
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.8rem;
+    transition: opacity 0.15s ease;
+}
+
+.error-home-link:hover,
+.error-home-link:focus-visible {
+    opacity: 0.85;
+}
+
+.error-redirect-status {
+    margin: 1.25rem 0 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+    min-height: 1.2em;
+}
+
+.error-redirect-status button {
+    font: inherit;
+    color: var(--accent);
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.error-redirect-status button:hover,
+.error-redirect-status button:focus-visible {
+    color: var(--text);
+}

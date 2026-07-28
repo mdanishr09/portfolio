@@ -1,143 +1,260 @@
-<!-- 
-  Used by: Browser (Entry point)
-  Uses: 
-    - styles/variables.css
-    - styles/base.css
-    - styles/loader.css
-    - styles/layout.css
-    - styles/sections.css
-    - styles/contacts.css
-    - scripts/main.js
+<!--
+    File: index.html
+    Uses: styles/base/variables.css, styles/base/base.css, styles/base/loader.css,
+          styles/layout/layout.css, styles/sections/sections.css, styles/sections/contacts.css,
+          styles/print.css, scripts/main.js (which loads the rest of scripts/**/*.js), manifest.json
+    Used by: (none — this is the site's only page)
+
+    Static single-page portfolio. Content is rendered at runtime from
+    data/portfolio-data.json by scripts/main.js.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Danish Riaz — Software Engineer</title>
-    <meta name="description" content="Portfolio of Muhammad Danish Riaz, Software Engineer.">
-    <!-- -->
+
+    <!-- Security hardening. This is a static site with no server to
+         set real HTTP headers, so these are the meta-tag equivalents
+         — note that meta tags can only carry a subset of what a real
+         header can: X-Frame-Options and X-Content-Type-Options are
+         silently ignored by browsers when delivered this way (they
+         require an actual HTTP response header), so they're left out
+         rather than included for false reassurance. If this is ever
+         deployed behind something that lets you set real headers
+         (Netlify _headers, Cloudflare Pages, etc.), set those two
+         there instead. connect-src/form-action allow Formspree since
+         the contact form submits there; everything else is 'self'
+         only, since the site loads no other third-party resources. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; object-src 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <meta name="description" content="Muhammad Danish Riaz — Software Engineer. Portfolio of full-stack projects and skills.">
     <link rel="canonical" href="https://mdanishr09.github.io/portfolio/">
-   <meta property="og:title" content="Muhammad Danish Riaz — Software Engineer">
-   <meta property="og:description" content="Portfolio of Muhammad Danish Riaz, Software Engineer.">
-   <meta property="og:type" content="website">
-   <meta property="og:url" content="https://mdanishr09.github.io/portfolio/">
-   <meta name="twitter:card" content="summary">
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles/variables.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/loader.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/sections.css">
-    <link rel="stylesheet" href="styles/contacts.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect x='8' y='8' width='240' height='240' rx='48' fill='%230b0c0e' stroke='%236fd9a8' stroke-width='6'/%3E%3Ctext x='128' y='168' font-family='Arial, sans-serif' font-weight='700' font-size='120' fill='%236fd9a8' text-anchor='middle'%3EDR%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <!-- iOS Safari historically ignores manifest.json's
+         display:"standalone" unless these older meta tags are also
+         present, so both are kept in sync with the manifest. -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Danish Riaz">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mdanishr09.github.io/portfolio/">
+    <meta property="og:title" content="Muhammad Danish Riaz — Software Engineer">
+    <meta property="og:description" content="Portfolio of full-stack projects, skills, and contact info.">
+    <meta property="og:image" content="https://mdanishr09.github.io/portfolio/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Mobile browser chrome color, matched to the active theme.
+         The "id" attributes let theme-toggle.js swap the content
+         value directly when the person toggles themes manually,
+         since the media-query alone only covers the OS preference. -->
+    <meta name="theme-color" id="themeColorLight" content="#fafaf8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" id="themeColorDark" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Danish Riaz — Software Engineer">
+    <meta name="twitter:description" content="Portfolio of full-stack projects, skills, and contact info.">
+    <meta name="twitter:image" content="https://mdanishr09.github.io/portfolio/assets/images/og-image.png">
+
+    <!-- Structured data: helps search engines understand this page
+         without needing to execute JavaScript first. NOTE: sameAs is
+         hand-maintained here — it can't read data/portfolio-data.json
+         since crawlers that don't execute JS need this tag to already
+         be correct in the raw HTML. Keep it in sync with the profile
+         links (not the personal-site/email ones) in data.contacts
+         whenever contacts change. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Danish Riaz",
+        "jobTitle": "Software Engineer",
+        "url": "https://mdanishr09.github.io/portfolio/",
+        "sameAs": [
+            "https://github.com/MDanishR09",
+            "https://www.linkedin.com/in/mdanishr09/",
+            "https://x.com/MDanishR09",
+            "https://www.upwork.com/freelancers/~01ceb1eb5a99b804b4",
+            "https://profile.indeed.com/p/muhammaddanishr-vrwc0rz"
+        ]
+    }
+    </script>
+
+    <title>Muhammad Danish Riaz — Software Engineer</title>
+
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/base/loader.css">
+    <link rel="stylesheet" href="styles/layout/layout.css">
+    <link rel="stylesheet" href="styles/sections/sections.css">
+    <link rel="stylesheet" href="styles/sections/contacts.css">
+    <link rel="stylesheet" href="styles/print.css" media="print">
 </head>
-<body id="top">
-    <!-- Loader -->
-    <div id="pageLoader" class="page-loader">
-        <div class="spinner"></div>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <noscript>
+        <div class="noscript-fallback">
+            <h1>Muhammad Danish Riaz — Software Engineer</h1>
+            <p>I'm a Software Engineer and BSIT graduate focused on building clean, efficient, and responsive web applications. I bridge the gap between robust backend logic and intuitive frontend design.</p>
+            <p>This site needs JavaScript enabled to load the full, up-to-date portfolio. You can reach me at <a href="mailto:mdanishr18@gmail.com">mdanishr18@gmail.com</a>.</p>
+        </div>
+    </noscript>
+
+    <div class="page-loader" id="pageLoader" aria-live="polite" aria-label="Loading">
+        <div class="spinner" aria-hidden="true"></div>
     </div>
 
-    <!-- Fatal Error Screen -->
-    <div id="fatalErrorScreen" class="fatal-error" hidden>
+    <div class="fatal-error" id="fatalErrorScreen" hidden>
         <div class="fatal-error-card">
             <h1>Something went wrong</h1>
             <p>We couldn't load this page right now. Please check your connection and try again.</p>
-            <button id="fatalErrorRetry" class="pill-btn-fatal">Try Again</button>
+            <button type="button" class="pill-btn-fatal" id="fatalErrorRetry">Try Again</button>
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div id="pageContainer" class="container">
+    <div class="container" id="pageContainer">
         <header>
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-                <span id="themeIcon"></span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
             </button>
             <div class="profile-row">
-                <div class="avatar" hidden>
-                    <img id="avatarImg" src="" alt="">
-                </div>
-                <div>
+                <div class="identity">
                     <h1 id="name"></h1>
-                    <p class="subtitle" id="role"></p>
+                    <div class="subtitle" id="role"></div>
                 </div>
             </div>
-            <div id="header-contacts" class="header-contacts"></div>
-            <nav id="site-nav" class="site-nav"></nav>
+            <div class="header-contacts" id="header-contacts" aria-label="Quick contact links"></div>
         </header>
 
-        <main>
-            <section id="about-section" hidden>
+        <!-- Deliberately a sibling of <header>, not nested inside it.
+             position: sticky only keeps an element pinned within the
+             bounds of its own parent — header is short (just the
+             profile/contacts content), so a <nav> nested inside it
+             could only "stick" for the brief moment header itself
+             was still scrolling past, then get dragged off with it.
+             Living directly in .container (which spans the whole
+             page) gives it room to stay pinned for the entire scroll. -->
+
+        <!-- Zero-height marker placed immediately above the sticky
+             nav. Used by ui/nav.js (setupStickyNavState) to detect
+             when the nav has actually pinned to the viewport: once
+             this sentinel scrolls above the top edge, the nav
+             (which sits right below it) must be stuck. This is the
+             standard IntersectionObserver technique for detecting
+             position:sticky activation, since CSS alone has no
+             ":stuck" selector. -->
+        <div class="nav-sticky-sentinel" id="navStickySentinel" aria-hidden="true"></div>
+        <nav class="site-nav" id="site-nav" aria-label="Section navigation">
+            <!-- Nav links are injected here by ui/render.js
+                 (renderNav), which replaces this element's
+                 innerHTML — so the nav's own theme-toggle button is
+                 appended by ui/theme-toggle.js after that render
+                 call rather than written statically here, or
+                 renderNav would wipe it out. It's only made visible
+                 once the nav is actually stuck (see .nav-theme-toggle
+                 rule in layout.css). -->
+        </nav>
+
+        <main id="main-content" tabindex="-1">
+            <!-- About Section -->
+            <section id="about">
                 <details open>
-                    <summary>
-                        <h2>About</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
+                    <summary><h2>About</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
                     <p class="summary" id="summary"></p>
                 </details>
             </section>
 
-            <section id="services-section" hidden>
+            <!-- Services Section -->
+            <section id="services">
                 <details open>
-                    <summary>
-                        <h2>Services</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
+                    <summary><h2>Services</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
                     <div id="services-container"></div>
                 </details>
             </section>
 
-            <section id="experience-section" hidden>
+            <!-- Experience Section -->
+            <section id="experience">
                 <details open>
-                    <summary>
-                        <h2>Experience</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
+                    <summary><h2>Experience</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
                     <div id="experience-container"></div>
                 </details>
             </section>
 
-            <section id="skills-section" hidden>
+            <!-- Skills Section -->
+            <section id="skills">
                 <details open>
-                    <summary>
-                        <h2>Skills</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
-                    <div id="skills-container" class="skills-list"></div>
+                    <summary><h2>Skills</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
+                    <div class="skills-list" id="skills-container"></div>
                 </details>
             </section>
 
-            <section id="projects-section" hidden>
+            <!-- Projects Section -->
+            <section id="projects">
                 <details open>
-                    <summary>
-                        <h2>Projects</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
+                    <summary><h2>Projects</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
                     <div id="projects-container"></div>
                 </details>
             </section>
 
-            <section id="contacts-section" hidden>
+            <!-- Contacts Section: icon links + "send a message" form
+                 (submits to Formspree — see scripts/features/contact-form.js) -->
+            <section id="contacts">
                 <details open>
-                    <summary>
-                        <h2>Contacts</h2>
-                        <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    </summary>
-                    <div id="links-container" class="links-list"></div>
+                    <summary><h2>Contacts</h2><span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
+                    <div class="links-list" id="links-container"></div>
+
+                    <div class="contact-form-wrapper">
+                        <h3 class="form-heading">Send a message</h3>
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xykrnagd" method="POST" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cf-name">Name</label>
+                                    <input type="text" id="cf-name" name="name" autocomplete="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cf-email">Email</label>
+                                    <input type="email" id="cf-email" name="email" autocomplete="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-subject">Subject</label>
+                                <input type="text" id="cf-subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-message">Message</label>
+                                <textarea id="cf-message" name="message" rows="5" maxlength="2000" required></textarea>
+                                <span class="form-char-count" id="cf-message-count" aria-live="off">0 / 2000</span>
+                            </div>
+                            <div class="form-honeypot" aria-hidden="true">
+                                <label for="cf-website">Website</label>
+                                <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            <button type="submit" class="form-submit">Send Message</button>
+                            <div class="form-notification" id="formNotification" role="alert" hidden>
+                                <span id="formNotificationText"></span>
+                                <button type="button" class="form-notification-close" id="formNotificationClose" aria-label="Dismiss notification">&times;</button>
+                            </div>
+                        </form>
+                    </div>
                 </details>
             </section>
         </main>
 
         <footer class="site-footer">
             <p class="footer-copyright">© <span id="footerYear"></span> <span id="footerName"></span>. All rights reserved.</p>
-            <a href="#top" id="backToTop" class="back-to-top">↑ Back to top</a>
+            <a href="#top" class="back-to-top" id="backToTop">↑ Back to top</a>
         </footer>
     </div>
 
-    <noscript>
-        <p style="text-align:center; padding:2rem;">This site needs JavaScript enabled to load the portfolio. You can reach me at mdanishr18@gmail.com.</p>
-    </noscript>
-
-    <!-- Scripts -->
-    <script type="module" src="scripts/main.js" defer="true"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

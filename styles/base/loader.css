@@ -1,23 +1,23 @@
-/**
- * File: styles/loader.css
- * 
- * Used by: index.html
- * Uses: styles/variables.css
- */
+/* File: styles/base/loader.css
+   Used by: index.html
+   Uses: base/variables.css (reads --bg, --text, --border, --accent custom properties)
+   Full-page loading overlay and the fatal-error screen shown if
+   data/portfolio-data.json fails to load. */
+
 .page-loader {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    z-index: 100;
     background-color: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s ease;
 }
+
 .page-loader[hidden] {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
+
 .spinner {
     width: 28px;
     height: 28px;
@@ -26,9 +26,11 @@
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
 @media (prefers-reduced-motion: reduce) {
     .spinner {
         animation-duration: 1.6s;

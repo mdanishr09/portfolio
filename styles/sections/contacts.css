@@ -1,0 +1,216 @@
+/* File: styles/sections/contacts.css
+   Used by: index.html
+   Uses: base/variables.css (reads --text, --border, --accent, --bg, --muted,
+   --font-sans, --btn-success, --btn-error, --btn-pending, --text-warning,
+   --text-error custom properties)
+   Styling for the Contacts section: the icon link list and the
+   "send a message" form (submitted via Formspree — see
+   scripts/features/contact-form.js). */
+
+.links-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.links-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.links-list a:hover,
+.links-list a:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.links-list svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+/* ---------- Contact form ---------- */
+.contact-form-wrapper {
+    margin-top: 2.5rem;
+}
+
+.form-heading {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.1rem 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 480px;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1 1 180px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-char-count {
+    align-self: flex-end;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+.form-char-count[data-near-limit="true"] {
+    color: var(--text-warning);
+}
+
+.form-submit {
+    align-self: flex-end;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bg);
+    background-color: var(--text);
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.form-submit:hover {
+    opacity: 0.85;
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* While actively sending, keep the button at full opacity (rather
+   than the generic disabled dimming above) so the yellow "Sending…"
+   text stays clearly readable, and use a "wait" cursor since this
+   is a temporary in-progress state rather than something
+   permanently unavailable. */
+.form-submit:disabled.is-loading {
+    opacity: 1;
+    cursor: wait;
+    color: var(--btn-pending);
+}
+
+.form-submit.is-success {
+    color: var(--btn-success);
+}
+
+.form-submit.is-error {
+    color: var(--btn-error);
+}
+
+.form-notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+}
+
+.form-notification[hidden] {
+    display: none;
+}
+
+.form-notification[data-state="error"] {
+    background-color: rgba(214, 69, 69, 0.08);
+    border: 1px solid var(--text-error);
+    color: var(--text-error);
+}
+
+.form-notification[data-state="success"] {
+    background-color: rgba(52, 211, 153, 0.1);
+    border: 1px solid var(--btn-success);
+    color: var(--btn-success);
+}
+
+.form-notification-close {
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.form-notification[data-state="error"] .form-notification-close:hover,
+.form-notification[data-state="error"] .form-notification-close:focus-visible {
+    background-color: rgba(214, 69, 69, 0.15);
+}
+
+.form-notification[data-state="success"] .form-notification-close:hover,
+.form-notification[data-state="success"] .form-notification-close:focus-visible {
+    background-color: rgba(52, 211, 153, 0.18);
+}
+
+.form-honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

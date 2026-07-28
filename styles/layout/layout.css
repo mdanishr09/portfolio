@@ -1,0 +1,398 @@
+/* File: styles/layout/layout.css
+   Used by: index.html
+   Uses: base/variables.css (reads --bg, --text, --border, --accent, custom properties;
+   also declares the extra --max-width token used only on this page)
+   Page shell: container, header/nav, collapsible section
+   chrome, and footer. */
+
+:root {
+    --max-width: 680px;
+}
+
+/* Keeps anchor jumps (nav clicks, hash changes, back-to-top,
+   project deep links) from tucking a target's top edge behind the
+   sticky nav bar. Value is a generous estimate of the nav's actual
+   rendered height (padding + border + text line-height) with a
+   little extra breathing room — a slightly larger gap is harmless,
+   too small would clip content under the bar. */
+html {
+    scroll-padding-top: 72px;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+}
+
+/* ---------- Skip link ---------- */
+/* Off-screen until keyboard-focused, so sighted mouse users never
+   see it but keyboard/screen-reader users can jump past the header
+   straight to <main id="main-content">. */
+.skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    z-index: 100;
+    background-color: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* ---------- Header ---------- */
+header {
+    padding-top: 0.25rem;
+    position: relative;
+}
+
+.profile-row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+    letter-spacing: -0.01em;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 0;
+}
+
+.header-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-contacts a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.header-contacts a:hover,
+.header-contacts a:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.header-contacts svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* ---------- Nav ---------- */
+/* position: sticky is the browser-native way to get exactly this
+   behavior: the nav scrolls normally until it would go off the top
+   of the viewport, at which point it pins there — then unpins and
+   returns to its normal in-flow position once you scroll back up
+   past it. No scroll-direction JS is needed for this part; the only
+   JS involved (ui/nav.js's setupScrollSpy) is for highlighting which
+   link is current, which is a separate concern.
+
+   IMPORTANT: in index.html, <nav class="site-nav"> must be a direct
+   sibling of <header> (inside .container), NOT nested inside
+   <header>. A sticky element can only stay pinned within the bounds
+   of its own parent's box — header is short (just the profile/
+   contacts content), so nav nested inside it could only "stick" for
+   the brief moment header itself was still scrolling past, then get
+   dragged off along with it. Living in .container (which spans the
+   whole page) gives it room to stay pinned for the entire scroll. */
+/* Zero-height marker sitting directly above nav.site-nav — see
+   setupStickyNavState() in ui/nav.js for how it's used to detect the
+   nav becoming pinned. Never rendered visually; height/margin: 0
+   makes sure it can't introduce a gap above the nav or affect layout
+   in any way, it exists purely for IntersectionObserver to watch. */
+.nav-sticky-sentinel {
+    height: 0;
+    margin: 0;
+}
+
+nav.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0;
+    padding: 1.25rem 0;
+    margin-bottom: 2.5rem;
+    background-color: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+nav.site-nav a {
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: var(--muted);
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav.site-nav a:not(:last-of-type)::after {
+    content: "\00B7";
+    display: inline-block;
+    color: var(--border);
+    font-weight: 400;
+    margin: 0 0.9rem;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Scrollspy-driven active state (see ui/nav.js setupScrollSpy) —
+   text color only, deliberately not touching border-color so it
+   reads as distinct from the hover/focus state above. */
+nav.site-nav a[aria-current="true"] {
+    color: var(--accent);
+}
+
+/* ---------- Collapsible sections ---------- */
+details {
+    margin: 0;
+}
+
+details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    list-style: none;
+    margin: 0 0 1.3rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    -webkit-tap-highlight-color: transparent;
+}
+
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+details > summary::marker {
+    content: "";
+}
+
+details > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+}
+
+.chevron svg {
+    width: 100%;
+    height: 100%;
+}
+
+details[open] > summary .chevron {
+    transform: rotate(180deg);
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin: 0;
+}
+
+section {
+    margin-bottom: 3.75rem;
+    scroll-margin-top: 1.5rem;
+}
+
+section[hidden] {
+    display: none;
+}
+
+/* ---------- Fatal error screen ---------- */
+.fatal-error {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background-color: var(--bg);
+}
+
+.fatal-error[hidden] {
+    display: none;
+}
+
+.fatal-error-card {
+    max-width: 360px;
+    text-align: center;
+}
+
+.fatal-error-card h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem 0;
+}
+
+.fatal-error-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+}
+
+.pill-btn-fatal {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bg);
+    background-color: var(--text);
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.pill-btn-fatal:hover {
+    opacity: 0.85;
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    border-color: var(--accent);
+}
+
+.theme-toggle svg {
+    width: 1.05rem;
+    height: 1.05rem;
+}
+
+/* ---------- Sticky nav's own theme toggle ---------- */
+/* Appended into nav.site-nav by ui/theme-toggle.js (see
+   appendNavThemeToggleButton). Hidden by default — nav.site-nav is a
+   flex row, so a display:none child takes up no space and doesn't
+   affect how the section links wrap. Revealed only once
+   setupStickyNavState() (ui/nav.js) marks the nav "is-stuck", i.e.
+   exactly when position: sticky has actually pinned it to the top
+   of the viewport. margin-left: auto pushes it to the right end of
+   the nav's current line, beside the links, matching where the
+   header's own toggle sits at rest. */
+.nav-theme-toggle {
+    display: none;
+    position: static;
+    width: 1.9rem;
+    height: 1.9rem;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+nav.site-nav.is-stuck .nav-theme-toggle {
+    display: inline-flex;
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+    margin-top: 4rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.footer-copyright {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 0.9rem 0;
+}
+
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 3.5rem 1.25rem 4rem;
+    }
+    header {
+        padding-top: 2.75rem;
+    }
+    .theme-toggle {
+        top: -1.75rem;
+    }
+}

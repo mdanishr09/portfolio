@@ -1,0 +1,62 @@
+/* File: styles/print.css
+   Used by: index.html (loaded with media="print", so it only
+   applies when printing/exporting to PDF — never on screen)
+   Uses: (none)
+
+   Hides UI that's meaningless on paper (theme toggle, nav, skip
+   link, back-to-top, loader/fatal-error screens, the contact form —
+   nobody can fill in a printed <input>), forces every collapsible
+   section open regardless of its on-screen state, and prints the
+   target URL next to links since the underlined blue text alone is
+   useless once it's not clickable. */
+
+@media print {
+    .skip-link,
+    .theme-toggle,
+    .site-nav,
+    .page-loader,
+    .fatal-error,
+    .back-to-top,
+    .contact-form-wrapper,
+    .form-notification {
+        display: none !important;
+    }
+
+    /* The browser's own UA stylesheet hides a <details>'s content
+       when it isn't [open]; this overrides that so a section a
+       visitor happened to collapse on screen still prints in full. */
+    details:not([open]) > *:not(summary) {
+        display: block !important;
+    }
+
+    summary {
+        list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary .chevron {
+        display: none !important;
+    }
+
+    a[href^="http"]::after,
+    a[href^="mailto:"]::after,
+    a[href^="tel:"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.75em;
+        font-weight: 400;
+        color: #444;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+}
