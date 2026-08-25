@@ -1,4 +1,4 @@
-# Danish Riaz — Portfolio
+# Muhammad Danish Riaz — Portfolio
 
 A static, dependency-free single-page portfolio. Everything on the
 page is driven from a couple of JSON files, so editing the site
